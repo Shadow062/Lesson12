@@ -87,4 +87,78 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     setClock('timer', deadline);
+
+    // Modal
+
+    // 1) Первый способ
+    //     let more = document.querySelector('.more'),
+    //         overlay = document.querySelector('.overlay'),
+    //         close = document.querySelector('.popup-close'),
+    //         descriptionBtn = document.querySelector('.description-btn');
+
+    //     // Узнать больше
+    //     more.addEventListener('click', function () {
+    //         overlay.style.display = 'block';
+    //         this.classList.add('more-splash');
+    //         document.body.style.overflow = 'hidden';
+    //     });
+
+    //     // Для закрытия модального окна
+    //     close.addEventListener('click', function () {
+    //         overlay.style.display = 'none';
+    //         more.classList.remove('more-splash');
+    //         document.body.style.overflow = '';
+    //     });
+
+    // 2) Второй способ думаю самый хороший
+    function modalWindow(openModal) {
+
+        let overlay = document.querySelector('.overlay'),
+            close = document.querySelector('.popup-close'),
+            open = document.querySelectorAll(openModal);
+
+        for (let i = 0; i < open.length; i++) {
+
+            open[i].addEventListener('click', function () {
+                overlay.style.display = 'block';
+                this.classList.add('more-splash');
+                document.body.style.overflow = 'hidden';
+            });
+
+            close.addEventListener('click', function () {
+                overlay.style.display = 'none';
+                open[i].classList.remove('more-splash');
+                document.body.style.overflow = '';
+            });
+
+        }
+
+    }
+    modalWindow('.more');
+    modalWindow('.description-btn');
+
+
+    // 3) Третий способ
+    // function openModal(e) {
+    //     const target = e.target,
+    //         body = document.body,
+    //         modal = document.querySelector('.overlay'),
+    //         closeBtn = modal.querySelector('.popup-close');
+
+    //     modal.style.display = 'block';
+    //     body.style.overflow = 'hidden';
+    //     target.classList.add('more-splash');
+
+    //     closeBtn.addEventListener('click', function () {
+    //         modal.style.display = 'none';
+    //         body.style.overflow = '';
+    //         target.classList.remove('more-splash');
+    //     });
+    // }
+
+    // document.querySelector('.more').addEventListener('click', openModal);
+
+    // document.querySelectorAll('.description-btn').forEach(function (btn) {
+    //     btn.addEventListener('click', openModal);
+    // });
 });
