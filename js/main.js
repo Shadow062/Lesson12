@@ -373,12 +373,12 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    place.addEventListener('clicl', function () {
+    place.addEventListener('change', function () {
         if (restDays.value == '' || persons.value == '') {
             totalValue.innerHTML = 0;
         } else {
             let a = total;
-            totalValue.innerHTML = a * this.options[this.selectedIndex].value;
+            totalValue.innerHTML = a * this.value;
         }
     });
 });
